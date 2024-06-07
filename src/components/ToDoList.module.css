@@ -1,0 +1,7 @@
+.tdl {
+    display: flex;
+    flex-direction: column;
+    padding-top: 17px;
+    list-style: none;
+    row-gap: 16px;
+}

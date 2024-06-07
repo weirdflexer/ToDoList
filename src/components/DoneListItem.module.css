@@ -1,0 +1,20 @@
+.tdlItem {
+    background-color: #15101C;
+    padding: 20px;
+    border-radius: 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: #78CFB0;
+    text-decoration: line-through;
+    width: 430px;
+    min-height: 75px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 390px;
+    height: 30px;
+}
