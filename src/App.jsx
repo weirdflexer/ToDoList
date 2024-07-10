@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewTaskField from "./components/NewTaskField";
 import ToDoList from "./components/ToDoList";
 import DoneList from "./components/DoneList";
 import "./styles/App.css"
 
+const defaultState = {
+  id: Date.now(),
+  description: "Create first TODO"
+}
+
 function App() {
-  const [toDoList, setToDoList] = useState([{id: Date.now(), description: "Create first TODO"}]);
-  const [doneList, setDoneList] = useState([]);
+  const [toDoList, setToDoList] = useState(JSON.parse(localStorage.getItem("toDoList")) || [defaultState]);
+  const [doneList, setDoneList] = useState(JSON.parse(localStorage.getItem("doneList")) || []);
 
   function addToList(description) {
-    setToDoList([...toDoList, {id: Date.now(), description: description}]);
+    setToDoList([...toDoList, { id: Date.now(), description: description }]);
   }
 
   function removeListItem(id) {
@@ -20,6 +25,14 @@ function App() {
     setDoneList([...doneList, task]);
     removeListItem(task.id);
   }
+
+  useEffect(() => {
+    localStorage.setItem("toDoList", JSON.stringify(toDoList));}, [toDoList]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("doneList", JSON.stringify(doneList));}, [doneList]
+  );
 
   return (
     <div className="App">
